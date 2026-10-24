@@ -1,0 +1,9 @@
+{
+  "tiles": [
+    { "id": "btn-ping", "label": "Ping PC", "command": "echo ok", "confirm": false },
+    { "id": "btn-ip", "label": "Show LAN IP", "command": "ipconfig | findstr IPv4", "confirm": false },
+    { "id": "btn-refresh", "label": "Refresh", "command": null, "confirm": false, "note": "null command = just trigger an immediate state push" },
+    { "id": "btn-sleep", "label": "Lock PC (example, disabled)", "command": null, "confirm": true, "disabled": true,
+      "note": "template for a destructive tile: set disabled=false and a real command; confirm:true forces tap-again" }
+  ]
+}

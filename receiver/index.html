@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=1024, initial-scale=1">
+<title>NestDash</title>
+<style>
+  html,body{margin:0;height:100%;background:#0c0e14;color:#eaeeef;
+    font-family:'Segoe UI',system-ui,sans-serif;overflow:hidden;
+    -webkit-user-select:none;user-select:none}
+  #app{height:100%;display:flex;flex-direction:column}
+  .page{flex:1;display:none;flex-direction:column;padding:48px 60px}
+  .page.active{display:flex}
+  .clock{font-size:150px;font-weight:700;line-height:1}
+  .date{font-size:52px;color:#9aa0af;margin-top:12px}
+  .weather{font-size:64px;color:#7ac8ff;margin-top:36px}
+  .hilo{font-size:38px;color:#9aa0af;margin-top:8px}
+  .stat{display:flex;justify-content:space-between;font-size:44px;margin:14px 0}
+  .stat b{font-weight:600}
+  .tiles{display:grid;grid-template-columns:1fr 1fr;gap:28px;flex:1;margin-top:20px}
+  .tile{background:#1a1f2b;border-radius:20px;display:flex;align-items:center;
+    justify-content:center;font-size:40px;text-align:center;padding:0 20px}
+  .tile:active{background:#2a3244}
+  .tile.confirm{background:#4a2b2b}
+  .tile.flash-ok{background:#1f4433}
+  .tile.flash-err{background:#5a2020}
+  #bar{height:56px;display:flex;align-items:center;justify-content:space-between;
+    padding:0 40px;background:#12151d;font-size:24px;color:#7d8496}
+  #dots{display:flex;gap:12px}
+  .dot{width:14px;height:14px;border-radius:50%;background:#333a4a}
+  .dot.active{background:#7ac8ff}
+  #wait{position:absolute;inset:0;display:none;flex-direction:column;gap:16px;
+    align-items:center;justify-content:center;background:#0c0e14;z-index:9}
+  #wait .big{font-size:52px}
+</style>
+</head>
+<body>
+  <!-- TODO-verify: confirm current CAF Receiver SDK URL against
+       developers.google.com/cast/docs/receiver_web (it changes rarely).
+       app.js degrades gracefully when this 404s: demo mode + waiting state. -->
+  <script src="https://www.gstatic.com/cast/sdk/receiver/caf_receiver.js"></script>
+  <div id="app">
+    <div id="p-home" class="page">
+      <div class="clock" id="clock">--:--</div>
+      <div class="date" id="date"></div>
+      <div class="weather" id="wx"></div>
+      <div class="hilo" id="hilo"></div>
+    </div>
+    <div id="p-status" class="page"><div id="stats"></div></div>
+    <div id="p-actions" class="page"><div class="tiles" id="tiles"></div></div>
+    <div id="bar">
+      <span id="age">starting…</span>
+      <div id="dots"><div class="dot" data-p="home"></div><div class="dot" data-p="status"></div><div class="dot" data-p="actions"></div></div>
+      <span id="net">offline</span>
+    </div>
+  </div>
+  <div id="wait"><div class="big">waiting for PC…</div><div id="waitage"></div></div>
+  <script src="app.js"></script>
+</body>
+</html>
