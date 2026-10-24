@@ -33,10 +33,9 @@ Verified on real hardware:
 - hub firmware too new for the chipicopwn bootloader exploit (do not retry)
 
 TODO / unverified — verify against current docs before relying on them:
-- Cast Receiver SDK URL in `receiver/index.html` (marked in code)
-- Exact pychromecast launch/custom-message API calls in `sender/sender.py`
-  (marked `TODO-verify`); controller scaffold follows BaseControlle patterns
+- Raw LAUNCH fallback in sender.py (start_app is verified; fallback is not)
 - Whether the console still charges $5 for receiver registration
+- Live hub launch of the registered APP_ID (blocked on human registration)
 
 ## Conventions
 

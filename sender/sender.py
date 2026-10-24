@@ -134,13 +134,12 @@ def main():
         c = next(x for x in cs if x.cast_info.host == NEST_IP)
         c.wait(10)
         controller = NestDash()
-        # TODO-verify: register_handler signature on current pychromecast.
-        c.register_handler(controller)
+        # register_handler lives on socket_client (verified in installed source)
+        c.socket_client.register_handler(controller)
         return c, controller
 
     def launch(c):
-        # TODO-verify: preferred launch API on current pychromecast (start_app
-        # may not exist; raw LAUNCH message below is the fallback).
+        # start_app(app_id) verified against installed pychromecast source.
         try:
             c.start_app(app_id)
         except AttributeError:
@@ -150,8 +149,9 @@ def main():
 
     def push(c, controller):
         try:
-            # TODO-verify: BaseController.send_message namespace handling.
-            controller.send_message(build_state(results), inc_by=1)
+            # send_message(data, *, inc_session_id, callback_function,
+            # no_add_request_id) - verified in installed pychromecast source.
+            controller.send_message(build_state(results))
         except Exception as e:
             print("push failed:", e)
 

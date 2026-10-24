@@ -35,10 +35,10 @@
 </style>
 </head>
 <body>
-  <!-- TODO-verify: confirm current CAF Receiver SDK URL against
-       developers.google.com/cast/docs/receiver_web (it changes rarely).
-       app.js degrades gracefully when this 404s: demo mode + waiting state. -->
-  <script src="https://www.gstatic.com/cast/sdk/receiver/caf_receiver.js"></script>
+  <!-- Cast Receiver SDK v3 — URL verified against googlecast/CastReceiver sample
+       and live bundle (200, ~365KB) on 2026-10-23. app.js still degrades to
+       demo/waiting mode if this fails to load. -->
+  <script src="https://www.gstatic.com/cast/sdk/libs/caf_receiver/v3/cast_receiver_framework.js"></script>
   <div id="app">
     <div id="p-home" class="page">
       <div class="clock" id="clock">--:--</div>

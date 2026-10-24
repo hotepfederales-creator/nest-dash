@@ -49,7 +49,7 @@ function tap(el, id) {
 
 function send(msg) {
   if (demo) return;
-  // TODO-verify: exact CAF API for custom messages on current SDK version.
+  // sendCustomMessage verified in live caf_receiver_framework.js bundle.
   try {
     const ctx = window.cast && cast.framework && cast.framework.CastReceiverContext.getInstance();
     ctx && ctx.sendCustomMessage(NS, undefined, msg);
@@ -89,7 +89,7 @@ function start() {
     onState(demoState()); setInterval(() => onState(demoState()), 5000);
     return;
   }
-  // TODO-verify: CAF receiver bootstrap names on current SDK version.
+  // Bootstrap verified against googlecast/CastReceiver sample + live bundle.
   try {
     const ctx = cast.framework.CastReceiverContext.getInstance();
     const opts = new cast.framework.CastReceiverOptions();
